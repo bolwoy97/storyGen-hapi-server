@@ -19,8 +19,9 @@ export const init = async function(): Promise<Server> {
 };
 
 export const start = async function(): Promise<void> {
-  console.log(`Listening on ${server.settings.host}:${server.settings.port}`);
-  return server.start();
+  return server.start().then(() => {
+    console.log(`Listening on ${server.settings.host}:${server.settings.port}`);
+  });;
 };
 
 process.on('unhandledRejection', (err) => {

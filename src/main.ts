@@ -1,4 +1,8 @@
 import { init, start } from "./server";
-import './db';
+import { connect as connectDB } from './db';
 
-init().then(() => start());
+init().then(
+  () => start().then(
+    () => { connectDB() }
+  )
+);
