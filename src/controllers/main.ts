@@ -2,5 +2,5 @@ import { Request } from "@hapi/hapi";
 
 export function index(request: Request): string {
   console.log("Processing request", request.info.id);
-  return "Hello! Nice to have met you.";
+  return "Welcome to StoryGen!";
 }
