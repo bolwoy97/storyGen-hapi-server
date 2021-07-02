@@ -1,10 +1,12 @@
+'use strict';
+
 import {
   createUser,
   getUsers,
   getUser,
   updateUser,
   deleteUser
-} from "../controllers/users.controller";
+} from "../../../controllers/users.controller";
 
 export default [
   {
