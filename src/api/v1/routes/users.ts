@@ -1,5 +1,6 @@
 'use strict';
 
+import { ServerRoute } from "@hapi/hapi";
 import {
   createUser,
   getUsers,
@@ -8,10 +9,17 @@ import {
   deleteUser
 } from "../../../controllers/users.controller";
 
-export default [
+import { createUserSchema } from "../../../validators/users";
+
+export default <ServerRoute[]>[
   {
     method: "POST",
     path: "/users",
+    config: {
+      validate: {
+        payload: createUserSchema
+      }
+    },
     handler: createUser
   },
   {

@@ -1,19 +1,27 @@
 'use strict';
 
 import * as Hapi from "@hapi/hapi";
-import { Request, Server } from "@hapi/hapi";
 import * as glob from "glob";
 import * as path from "path";
+import * as config from "./config";
 
-export let server: Server;
+const hapi_auth_jwt = require('hapi-auth-jwt2');
 
-export const init = async function(): Promise<Server> {
+export let server: Hapi.Server;
+
+export const init = async function(): Promise<Hapi.Server> {
   server = Hapi.server({
     port: process.env.PORT || 3000,
     host: '0.0.0.0'
   });
 
-  //server.route(routes);
+  // server.register(hapi_auth_jwt);
+  // server.auth.strategy('jwt', 'jwt', {
+  //   key: config.jwtKey,
+  //   verifyOptions: { algorithms: ['HS256'] }
+  // });
+  // server.auth.default('jwt');
+
   glob.sync('build/api/**/routes/*.js', {
     root: __dirname
   }).forEach(file => {

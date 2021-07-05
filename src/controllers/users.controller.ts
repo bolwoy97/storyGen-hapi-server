@@ -1,5 +1,6 @@
 import { Request, ResponseToolkit, ResponseObject } from "@hapi/hapi";
 import User from "../models/User";
+import { IUser } from "../models/User";
 
 export const createUser = async (
   request: Request,
@@ -48,7 +49,8 @@ export const updateUser = async (
   try {
     const updatedUser = await User.findByIdAndUpdate(
       request.params.id,
-      new User(request.payload),
+      <IUser>request.payload,
+      // new User(request.payload),
       { new: true }
     );
     if (updatedUser) {
