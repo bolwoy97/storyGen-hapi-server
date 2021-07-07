@@ -7,9 +7,9 @@ import {
   getUser,
   updateUser,
   deleteUser
-} from "../../../controllers/users.controller";
+} from "../controllers/users.controller";
 
-import { createUserSchema } from "../../../validators/users";
+import { createUserSchema } from "../validators/users";
 
 export default <ServerRoute[]>[
   {
