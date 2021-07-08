@@ -7,7 +7,7 @@ export default <ServerRoute[]>[
   <ServerRoute>{
     method: 'POST',
     path: '/login',
-    // config: { auth: false },
+    config: { auth: false },
     handler: login
   },
 ];

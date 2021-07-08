@@ -27,11 +27,8 @@ export const init = async function(): Promise<Hapi.Server> {
   glob.sync('build/routes/*.js', {
     root: __dirname
   }).forEach(file => {
-    console.log(file);
-    const routes = require(path.join(__dirname + "/..", file.default));
+    const routes = require(path.join(__dirname + "/..", file)).default;
     server.route(routes);
-    // routes.default.forEach((route: Hapi.ServerRoute | Hapi.ServerRoute[]) => {
-    // });
   });
 
   return server;

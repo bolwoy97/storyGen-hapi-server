@@ -12,5 +12,4 @@ export function createToken(user: IUser) {
   }
   return jwt.sign({ id: user._id }, config.jwtKey, { algorithm: 'HS256', expiresIn: "1h" });
 }
-
-module.exports = createToken;
+createToken;

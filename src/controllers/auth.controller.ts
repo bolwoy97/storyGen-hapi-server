@@ -20,6 +20,7 @@ export async function login(req: Request, h: ResponseToolkit) {
       return boom.unauthorized('incorrect pass');
     }
   } catch (err) {
-    return boom.unauthorized(err);
+    console.error(err);
+    return boom.internal(err);
   }
 }
