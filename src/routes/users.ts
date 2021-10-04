@@ -16,6 +16,7 @@ export default <ServerRoute[]>[
     method: "POST",
     path: "/users",
     config: {
+      auth: false,
       validate: {
         payload: createUserSchema
       }

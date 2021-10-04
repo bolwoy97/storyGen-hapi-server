@@ -20,6 +20,6 @@ describe("smoke test", async () => {
       url: "/"
     });
     expect(res.statusCode).to.equal(200);
-    expect(res.result).to.equal("Hello! Nice to have met you.");
+    expect(res.result).to.equal("Welcome to StoryGen!");
   });
 })

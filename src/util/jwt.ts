@@ -3,7 +3,7 @@
 
 const jwt = require('jsonwebtoken');
 import * as config from '../config';
-import { IUser } from '../models/User';
+import { IUser } from '../interfaces/User';
 
 export function createToken(user: IUser) {
   let scopes;

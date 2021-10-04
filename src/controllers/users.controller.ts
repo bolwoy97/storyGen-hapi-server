@@ -1,13 +1,17 @@
 import { Request, ResponseToolkit, ResponseObject } from "@hapi/hapi";
 import User from "../models/User";
-import { IUser } from "../models/User";
+import { IUser } from "../interfaces/User";
 
 export const createUser = async (
   request: Request,
   h: ResponseToolkit
 ): Promise<ResponseObject> => {
   try {
-    const user = new User(request.payload);
+    let user = await User.findOne({ username: (request.payload as IUser).username });
+    if (user){
+      return h.response('User already exist').code(400);
+    }
+    user = new User(request.payload);
     const userSaved = await user.save();
     return h.response(userSaved);
   } catch (error) {
